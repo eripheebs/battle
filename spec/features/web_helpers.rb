@@ -4,3 +4,9 @@ def sign_in_and_play
   fill_in :player2, with: "Muffin"
   click_button 'Submit'
 end
+
+def first_attack
+  sign_in_and_play
+  click_button 'Attack'
+  click_link 'Back To Play'
+end

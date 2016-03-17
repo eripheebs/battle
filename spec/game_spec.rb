@@ -6,9 +6,15 @@ describe Game do
   subject(:game) { described_class.new player1, player2 }
 
   describe '#attack' do
-      it 'should deduct 10 points from player' do
+      it 'should deduct 10 points from player 1 in first attack' do
         expect(player1).to receive(:deduct)
         game.attack(player1)
+      end
+
+      it 'should swap players the second attack' do
+        expect(player2).to receive(:deduct)
+        game.attack
+        game.attack
       end
   end
 

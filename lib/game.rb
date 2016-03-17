@@ -12,8 +12,13 @@ class Game
     @players.last
   end
 
-  def attack(player)
-    player.deduct
+  def attack
+    swap ? player1.deduct : player2.deduct
+    swap ? (swap == !true) : (swap == true)
+  end
+
+  def swap
+    !!true
   end
 
 end
