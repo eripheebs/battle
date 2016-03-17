@@ -8,10 +8,6 @@ class Player
     @points = START_POINTS
   end
 
-  def attack(player)
-    player.deduct
-  end
-
   def deduct
     @points -= DEDUCT_POINTS
   end

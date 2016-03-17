@@ -12,10 +12,4 @@ describe Player do
     expect(player.points).to eq(Player::START_POINTS)
   end
 
-  describe '#attack' do
-      it 'should deduct 10 points from other player' do
-        expect{player.attack(player2)}.to change{player2.points}.by -Player::DEDUCT_POINTS
-      end
-  end
-
 end
