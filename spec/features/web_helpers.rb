@@ -6,7 +6,6 @@ def sign_in_and_play
 end
 
 def first_attack
-  sign_in_and_play
   click_button 'Attack'
   click_link 'Back To Play'
 end

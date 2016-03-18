@@ -12,4 +12,8 @@ class Player
     @points -= DEDUCT_POINTS
   end
 
+  def dead?
+    @points <= 0
+  end
+
 end

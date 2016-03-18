@@ -9,21 +9,25 @@ class Battle < Sinatra::Base
   end
 
   post '/names' do
-    player1 = Player.new params[:player1]
-    player2 = Player.new params[:player2]
-    $game = Game.new player1, player2
+    Game.start params[:player1], params[:player2]
     redirect '/players'
   end
 
   get '/players' do
-    @game = $game
+    @game = Game.current_game
+    redirect '/game_over' if @game.game_over?
     erb :players
   end
 
   get '/attack' do
-    @game = $game
-    @game.attack(@game.player2)
+    @game = Game.current_game
+    @game.attack
     erb :attack
+  end
+
+  get '/game_over' do
+    @game = Game.current_game
+    erb :game_over
   end
 
   run! if app_file == $0

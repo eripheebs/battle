@@ -5,14 +5,19 @@ describe Game do
   let(:player2) { double :player, points: 5 }
   subject(:game) { described_class.new player1, player2 }
 
+  before do
+    allow(player1).to receive(:deduct)
+    allow(player2).to receive(:deduct)
+  end
+
   describe '#attack' do
-      it 'should deduct 10 points from player 1 in first attack' do
-        expect(player1).to receive(:deduct)
-        game.attack(player1)
+      it 'player1 should receive method deduct when attacked' do
+        expect(player2).to receive(:deduct)
+        game.attack
       end
 
       it 'should swap players the second attack' do
-        expect(player2).to receive(:deduct)
+        expect(player1).to receive(:deduct)
         game.attack
         game.attack
       end
